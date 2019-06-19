@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/login', 'LoginController@showLoginPage')->name('login')->middleware('guest');
+Route::post('/login', 'LoginController@login');
+
+Route::get('/dashboard', 'HomeController@dashboard')->middleware('auth');

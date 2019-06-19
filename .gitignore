@@ -3,7 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
+/resources/sass/startbootstrap-sb-admin-2-gh-pages/vendor
 .env.backup
 .phpunit.result.cache
 Homestead.json
