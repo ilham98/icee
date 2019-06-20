@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
+  <title>ICEE - Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,19 +32,30 @@
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+            <div class="row" style="height: 400px">
+              <div class="col-lg-6 d-none d-lg-block" style="height: 400px;overflow: hidden;">
+                <img style="height: 100%" src="/img/login.jpg">
+              </div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
                   <form class="user" action="/login" method="POST">
+                    @if(Session::has('error'))
+                      <h1 class="h6 text-blue-900 mb-4" style="color: red">Invalid email or Password</h1>
+                    @endif
                     <div class="form-group">
-                      <input name="email" type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input name="email" type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." value="{{ old('email') }}">
+                      @if($errors->has('email'))
+                        <h6 style="color: red">{{$errors->first('email')}}</h6>
+                      @endif
                     </div>
                     <div class="form-group">
-                      <input name="password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input name="password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" value="{{ old('password') }}">
+                      @if($errors->has('password'))
+                        <h6 style="color: red">{{$errors->first('password')}}</h6>
+                      @endif
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">

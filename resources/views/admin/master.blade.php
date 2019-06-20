@@ -48,7 +48,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-newspaper"></i>
           <span>News</span></a>
       </li>
       <!-- Divider -->
@@ -57,7 +57,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-users"></i>
           <span>Student</span></a>
       </li>
 
@@ -65,7 +65,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-user-friends"></i>
           <span>Teacher</span></a>
       </li>
 
@@ -73,7 +73,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-calendar-alt"></i>
           <span>Schedule</span></a>
       </li>
 
@@ -81,7 +81,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fab fa-wpforms"></i>
           <span>Regristation</span></a>
       </li>
 
@@ -89,7 +89,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-clipboard-list"></i>
           <span>Student Attedance</span></a>
       </li>
 
