@@ -77,7 +77,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    MS SARAH JOMS
+                    ICEE
                 </div>
             </div>
         </div>
