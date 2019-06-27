@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin</title>
+  <title>@yield('title')</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -37,64 +37,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
-       <hr class="sidebar-divider my-0">
-
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-newspaper"></i>
-          <span>News</span></a>
-      </li>
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-users"></i>
-          <span>Student</span></a>
-      </li>
-
-       <hr class="sidebar-divider my-0">
-
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-user-friends"></i>
-          <span>Teacher</span></a>
-      </li>
-
-       <hr class="sidebar-divider my-0">
-
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-calendar-alt"></i>
-          <span>Schedule</span></a>
-      </li>
-
-       <hr class="sidebar-divider my-0">
-
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fab fa-wpforms"></i>
-          <span>Regristation</span></a>
-      </li>
-
-       <hr class="sidebar-divider my-0">
-
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-clipboard-list"></i>
-          <span>Student Attedance</span></a>
-      </li>
-
-
-
+      @yield('sidebar')
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -146,7 +89,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Teacher</span>
   <!--               <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> -->
               </a>
               <!-- Dropdown - User Information -->
