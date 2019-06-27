@@ -17,6 +17,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::group(['prefix' => 'admin'], function() {
+	Route::get('news', 'NewsController@index');
+	Route::post('news', 'NewsController@store');
+	Route::delete('news/{id}', 'NewsController@destroy');
+	Route::get('news/{id}', 'NewsController@edit');
+	Route::put('news/{id}', 'NewsController@update');
+	Route::get('teachers', 'TeacherController@index');
+	Route::get('teachers/{id}', 'TeacherController@edit');
+	Route::put('teachers/{id}', 'TeacherController@update');
+	Route::post('teachers', 'TeacherController@store');
+	Route::delete('teachers/{id}', 'TeacherController@destroy');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/login', 'LoginController@showLoginPage')->name('login')->middleware('guest');
 Route::post('/login', 'LoginController@login');
