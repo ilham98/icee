@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     protected $primaryKey = 'teacher_id';
-    protected $fillable = ['name', 'phone_number', 'user_id'];
+    protected $fillable = ['name', 'phone_number', 'user_id', 'role'];
     public $timestamps = false;
 
     public function user() {

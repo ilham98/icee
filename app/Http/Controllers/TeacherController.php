@@ -25,7 +25,7 @@ class TeacherController extends Controller
     	$user = User::create([
     		'email' => $request->email,
     		'password' => Hash::make($request->email),
-            'role_id' => 2
+            'role' => 2
     	]);
 
     	$teacher = Teacher::create([
@@ -34,7 +34,7 @@ class TeacherController extends Controller
     		'user_id' => $user->user_id
     	]);
 
-    	return redirect('admin/teachers')->with('insert-success', 'success');
+    	return redirect('/teachers')->with('insert-success', 'success');
     }
 
     public function edit($id){
@@ -71,6 +71,6 @@ class TeacherController extends Controller
         $teacher->delete();
         $user->delete();
         
-        return redirect('admin/teachers')->with('delete-success', 'success');
+        return redirect('/teachers')->with('delete-success', 'success');
     }
 }

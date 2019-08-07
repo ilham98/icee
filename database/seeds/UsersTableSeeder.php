@@ -16,17 +16,17 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'email' => 'admin@gmail.com',
             'password' => Hash::make('default555'),
-            'role_id' => 1
+            'role' => 1
         ]);
         DB::table('users')->insert([
         	'email' => 'teacher@gmail.com',
         	'password' => Hash::make('default555'),
-            'role_id' => 2
+            'role' => 2
         ]);
         DB::table('users')->insert([
         	'email' => 'student@gmail.com',
         	'password' => Hash::make('default555'),
-            'role_id' => 3
+            'role' => 3
         ]);
     }
 }

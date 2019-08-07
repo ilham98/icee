@@ -39,7 +39,7 @@
 		  				<td>{{ ($i+1)*$current }}</td>
 		  				<td>{{ $n->title }}</td>
                         <td>
-                            <a href="/admin/news/{{ $n->news_id }}/edit"><i class="fas fa-edit"></i></a>
+                            <a href="/news/{{ $n->news_id }}/edit"><i class="fas fa-edit"></i></a>
                             <i class="fas fa-trash text-danger delete" data-id="{{ $n->news_id }}"></i>
                         </td>
 		  			</tr>
@@ -48,7 +48,7 @@
 		  </table>
         </div>
       </div>
-        <form action="/admin/news" method="POST">
+        <form action="/news" method="POST">
     		@component('admin.components.modal')
     			@slot('id', 'add')
     			@slot('title', 'Add News')
@@ -71,7 +71,7 @@
     <script type="text/javascript">
         $('.delete').click(function() {
             var id= $(this).data('id');
-            $('#delete-form').attr('action', '/admin/news/' + id);
+            $('#delete-form').attr('action', '/news/' + id);
             Swal.fire({
               title: 'Are you sure?',
               text: "You won't be able to revert this!",
@@ -87,7 +87,7 @@
             })
         })
     </script>
-    @if(Session::has('delete-success')))
+    @if(Session::has('delete-success'))
         <script type="text/javascript">
             Swal.fire(
                 'Deleted!',
@@ -96,7 +96,7 @@
             )
         </script>
     @endif
-     @if(Session::has('insert-success')))
+     @if(Session::has('insert-success'))
         <script type="text/javascript">
             Swal.fire(
                 'Success!',

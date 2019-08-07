@@ -41,7 +41,7 @@
     		  				<td>{{ $t->name }}</td>
                   <td>{{ $t->phone_number }}</td>
                   <td>
-                      <a href="/admin/teachers/{{ $t->teacher_id }}"><i class="fas fa-edit"></i></a>
+                      <a href="/teachers/{{ $t->teacher_id }}"><i class="fas fa-edit"></i></a>
                       <i class="fas fa-trash text-danger delete" data-id="{{ $t->teacher_id }}"></i>
                   </td>
     		  			</tr>
@@ -50,7 +50,7 @@
     		  </table>
         </div>
       </div>
-        <form action="/admin/teachers" method="POST">
+        <form action="/teachers" method="POST">
     		@component('admin.components.modal')
     			@slot('id', 'add')
     			@slot('title', 'Add Teacher')
@@ -75,7 +75,7 @@
     <script type="text/javascript">
         $('.delete').click(function() {
             var id= $(this).data('id');
-            $('#delete-form').attr('action', '/admin/teachers/' + id);
+            $('#delete-form').attr('action', '/teachers/' + id);
             Swal.fire({
               title: 'Are you sure?',
               text: "You won't be able to revert this!",

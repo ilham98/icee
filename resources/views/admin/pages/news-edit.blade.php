@@ -14,7 +14,7 @@
         	</div>
         </div>
         <div class="card-body">
-          <form action="/admin/news/{{ $news->news_id }}" method="POST">
+          <form action="/news/{{ $news->news_id }}" method="POST">
               @component('admin.forms.news-edit', compact('news'))
               @endcomponent
               <input type="submit" class="btn btn-primary" value="Update">

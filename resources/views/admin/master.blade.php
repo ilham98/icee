@@ -8,16 +8,16 @@
 	<hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item {{ url()->current() === url('/dashboard') ? 'active' : '' }}">
+        <a class="nav-link" href="/dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
 
        <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/news">
+      <li class="nav-item {{ url()->current() === url('/news') ? 'active' : '' }}">
+        <a class="nav-link" href="/news">
           <i class="fas fa-newspaper"></i>
           <span>News</span></a>
       </li>
@@ -25,42 +25,48 @@
       <hr class="sidebar-divider my-0">
 
 
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item {{ url()->current() === url('/students') ? 'active' : '' }}">
+        <a class="nav-link" href="/students">
           <i class="fas fa-users"></i>
           <span>Student</span></a>
       </li>
 
        <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/teachers">
+      <li class="nav-item {{ url()->current() === url('/teachers') ? 'active' : '' }}">
+        <a class="nav-link" href="/teachers">
           <i class="fas fa-user-friends"></i>
           <span>Teacher</span></a>
       </li>
 
        <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item {{ url()->current() === url('/schedules') ? 'active' : '' }}">
+        <a class="nav-link" href="/schedules" >
           <i class="fas fa-calendar-alt"></i>
-          <span>Schedule</span></a>
+          <span>Schedules</span></a>
       </li>
 
        <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item {{ url()->current() === url('/schedule-registration') ? 'active' : '' }}">
+        <a class="nav-link" href="/schedule-registration" >
           <i class="fab fa-wpforms"></i>
-          <span>Regristation</span></a>
+          <span>Schedule Regristation</span></a>
       </li>
 
        <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item {{ url()->current() === url('/student-attedance') ? 'active' : '' }}">
+        <a class="nav-link" href="/student-attedance">
           <i class="fas fa-clipboard-list"></i>
           <span>Student Attedance</span></a>
+      </li>
+
+      <li class="nav-item {{ url()->current() === url('/configurations') ? 'active' : '' }}">
+        <a class="nav-link" href="/configurations">
+          <i class="fas fa-clipboard-list"></i>
+          <span>Configurations</span></a>
       </li>
 @endsection
 

@@ -20,7 +20,7 @@ class NewsController extends Controller
     	]);
     	$body = $request->all();
     	$news = News::create($body);
-    	return redirect('admin/news')->with('insert-success', 'success');
+    	return redirect('news')->with('insert-success', 'success');
     }
 
     public function edit($id){
@@ -42,6 +42,6 @@ class NewsController extends Controller
     public function destroy($id) {
         $news = News::find($id);
         $news->delete();
-        return redirect('admin/news')->with('delete-success', 'success');
+        return redirect('news')->with('delete-success', 'success');
     }
 }
