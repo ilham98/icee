@@ -120,6 +120,35 @@ class AssignmentController extends Controller
                 'week' => $request->week,
                 'teacher_id' => Auth::user()->teacher->teacher_id
             ])->get();
-        return view('teacher.pages.assignment-edit', compact('topics'));
+        return view('teacher.pages.assignment-edit', compact('topics', 'id'));
+    }
+
+    public function update($id, Request $request) {
+        $time = Student::find($id)->times()->where('times.type', 'A')->first();
+        $topics = Topic::where([
+                'time_id' => $time->time_id, 
+                'year' => $request->year,
+                'semester' => $request->semester,
+                'week' => $request->week,
+                'teacher_id' => Auth::user()->teacher->teacher_id
+            ])->get();
+
+        if (Auth::user()->role === '2') {
+            foreach($request->teacher_comment as $i => $sc) {
+
+                $assignment = Assignment::where([
+                    'student_id' => $id,
+                    'topic_id' => $i,
+                    'week' => $request->week 
+                ])->first();
+
+                if($assignment) {
+                    $assignment->update([
+                        'teacher_comment' => $request->teacher_comment[$i]
+                    ]);
+                }
+            }
+        }
+        return redirect(url()->previous())->with('insert-success', true);
     }
 }

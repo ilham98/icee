@@ -57,8 +57,8 @@
 
        <hr class="sidebar-divider my-0">
 
-      <li class="nav-item {{ url()->current() === url('/student-attedance') ? 'active' : '' }}">
-        <a class="nav-link" href="/student-attedance">
+      <li class="nav-item {{ url()->current() === url('/student-attendance') ? 'active' : '' }}">
+        <a class="nav-link" href="/student-attendance">
           <i class="fas fa-clipboard-list"></i>
           <span>Student Attedance</span></a>
       </li>

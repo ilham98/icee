@@ -76,7 +76,7 @@
             })
         })
     </script>
-    @if(Session::has('delete-success')))
+    @if(Session::has('delete-success'))
         <script type="text/javascript">
             Swal.fire(
                 'Deleted!',
@@ -85,7 +85,7 @@
             )
         </script>
     @endif
-     @if(Session::has('insert-success')))
+     @if(Session::has('insert-success'))
         <script type="text/javascript">
             Swal.fire(
                 'Success!',

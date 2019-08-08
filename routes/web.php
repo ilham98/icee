@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$news = App\News::limit(5)->orderBy('updated_at', 'desc')->get();
+    return view('welcome', compact('news'));
 });
 
 Auth::routes();
@@ -52,15 +53,19 @@ Route::delete('topics/{id}', 'TopicController@destroy');
 
 Route::post('assignments', 'AssignmentController@store')->middleware('config');
 Route::get('assignments/{id}', 'AssignmentController@edit')->middleware('config');
+Route::put('assignments/{id}', 'AssignmentController@update')->middleware('config');
 Route::get('attendances', 'AttedanceController@index')->middleware('config');
 Route::get('assignments', 'AssignmentController@index')->middleware('config');
 Route::get('configurations', 'ConfigurationController@index');
 Route::post('configurations', 'ConfigurationController@store');
 Route::post('attendances', 'AttedanceController@store');
+Route::get('profile', 'ProfileController@index');
+Route::put('profile', 'ProfileController@update');
+Route::get('student-attendance', 'StudentAttendance@index')->middleware('config');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/login', 'LoginController@showLoginPage')->name('login')->middleware('guest');
 Route::post('/login', 'LoginController@login');
 
-Route::get('/dashboard', 'HomeController@dashboard')->middleware('auth');
+Route::get('/dashboard', 'HomeController@dashboard')->middleware('auth', 'config');

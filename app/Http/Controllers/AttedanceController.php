@@ -56,6 +56,6 @@ class AttedanceController extends Controller
     			}
     	}
 
-    	return redirect(url()->previous());
+    	return redirect(url()->previous())->with('update-success', true);
     }
 }

@@ -1,4 +1,4 @@
-@extends('student.master')
+@extends('teacher.master')
 
 @section('title', 'Attendance')
 
@@ -29,11 +29,11 @@
         </div>
       </form>
       @if($topics->count() > 0 && Request::get('week'))
-      <form class="row" method="POST" action="/assignments?week={{ Request::get('week') }}">
+      <form class="row" method="POST" action="/assignments/{{ $id }}?week={{ Request::get('week') }}">
         @foreach($topics as $i => $topic)
           @php
             $assignment = App\Assignment::where([
-              'student_id' => 3,
+              'student_id' => $id,
               'topic_id' => $topic->topic_id,
               'week' => Request::get('week')
             ])->first();
@@ -49,24 +49,28 @@
             <div class="h5 text-primary">{{ $topic->conversation }}</div> 
             <div class="form-group">
               <label>Student Comment</label>
-              <textarea name="student_comment[{{ $topic->topic_id }}]" class="form-control">{{ $assignment ? $assignment->student_comment : '' }}</textarea>
+              <textarea disabled="" name="student_comment[{{ $topic->topic_id }}]" class="form-control">{{ $assignment ? $assignment->student_comment : '' }}</textarea>
+            </div> 
+            <div class="form-group">
+              <label>Teacher Comment</label>
+              <textarea name="teacher_comment[{{ $topic->topic_id }}]" class="form-control">{{ $assignment ? $assignment->teacher_comment : '' }}</textarea>
             </div>     
             <div class="form-group">
               <label>Partner</label>
-              <input value="{{ $assignment ? $assignment->partner : '' }}" name="partner[{{ $topic->topic_id }}]" class="form-control">
+              <input disabled="" value="{{ $assignment ? $assignment->partner : '' }}" name="partner[{{ $topic->topic_id }}]" class="form-control">
             </div> 
             <div class="form-group">
               <label>Minute</label>
-              <input value="{{ $assignment ? $assignment->minute : '' }}" name="minute[{{ $topic->topic_id }}]" class="form-control">
+              <input disabled="" value="{{ $assignment ? $assignment->minute : '' }}" name="minute[{{ $topic->topic_id }}]" class="form-control">
             </div>
             <div class="form-group">
               <label>Vocabularies</label>
-              <input value="{{ $vocabularies }}" name="vocabularies[{{ $topic->topic_id }}]" class="form-control">
+              <input disabled="" value="{{ $vocabularies }}" name="vocabularies[{{ $topic->topic_id }}]" class="form-control">
             </div>
           </div>
         @endforeach
         @csrf
-        @method('POST')
+        @method('PUT')
         <div class="d-flex col-12">
           <input type='submit' value="Save Changes" class="btn btn-success" />
         </div>

@@ -2,7 +2,7 @@
 
 @section('title')
   @parent
-  Schedule Registration
+  Student
 @endsection
 
 
