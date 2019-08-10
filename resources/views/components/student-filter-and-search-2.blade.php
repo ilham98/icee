@@ -40,6 +40,9 @@
                     <option {{ Request::get('level') == 1 ? 'selected' : '' }} value="1">1</option>
                     <option {{ Request::get('level') == 2 ? 'selected' : '' }} value="2">2</option>
                     <option {{ Request::get('level') == 3 ? 'selected' : '' }} value="3">3</option>
+                    <option {{ Request::get('level') == 4 ? 'selected' : '' }} value="4">4</option>
+                    <option {{ Request::get('level') == 5 ? 'selected' : '' }} value="5">5</option>
+                    <option {{ Request::get('level') == 6 ? 'selected' : '' }} value="6">6</option>
                 </select>
               </div>
               <div class="form-group col-sm-3">

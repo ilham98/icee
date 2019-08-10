@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('../sass/startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js');
 
 window.Vue = require('vue');
 window.Swal = require('sweetalert2');

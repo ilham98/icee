@@ -13,15 +13,6 @@
         		<h6 class="m-0 font-weight-bold text-primary">Teachers</h6>
         	</div>
           	<div class="card-title">
-        		<h6 class="m-0 font-weight-bold text-primary">
-        			<button 
-        				type="button" 
-        				href="" 
-        				class="btn btn-primary" 
-        				data-toggle="modal" 
-        				data-target="#add"
-        			>Add Teacher</button>
-        		</h6>
         	</div>
         </div>
         <div class="card-body p-0">
@@ -74,7 +65,6 @@
                     <td>{{ $t->level->count() > 0 ? $t->level[0]->level : '-' }}</td>
                     <td>
                         <a href="/teacher-level/{{ $t->teacher_id }}?year={{ Request::get('year') }}&semester={{ Request::get('semester') }}"><i class="fas fa-edit"></i></a>
-                        <i class="fas fa-trash text-danger delete" data-id="{{ $t->teacher_id }}"></i>
                     </td>
       		  			</tr>
       		  		@endforeach

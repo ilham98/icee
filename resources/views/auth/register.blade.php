@@ -54,7 +54,7 @@
                             </div>
                         </form>
                     @else
-                        <div>Belum Buka</div>
+                        <div>We are not open registration yet.<br> For more information, meet us at Politeknik Negeri Samarinda library</div>
                     @endif
                 </div>
             </div>

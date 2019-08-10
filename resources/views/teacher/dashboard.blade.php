@@ -10,7 +10,7 @@
       <div class="card shadow mb-4">
         <div class="card-header py-3">
           <div class="card-title">
-            <h6 class="m-0 font-weight-bold text-primary">Student</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Dashboard</h6>
           </div>
         </div>
         <div class="card-body p-0">

@@ -116,7 +116,7 @@
         </div>
       </form>
       @else
-        Student gak ada anjing
+        No Data
       @endif
     </div>
   </div>

@@ -15,7 +15,7 @@
 
      <li class="nav-item {{ url()->current() === url('/interview') ? 'active' : '' }}">
       <a class="nav-link" href="/interview">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-user"></i>
         <span>Interview</span></a>
     </li>
 
