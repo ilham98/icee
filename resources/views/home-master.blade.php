@@ -10,7 +10,7 @@
     <body style="background: url('/img/welcome.jpg'); filter: blur(8);">
         <nav class="navbar bg-primary navbar-expand-md navbar-dark">
           <a class="navbar-brand" href="#">ICEE</a>
-          <div class="text-light d-none d-md-block">(International Center Of English Excellence)</div>
+          <div class="text-light d-none d-md-block">(International Center For English Excellence)</div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

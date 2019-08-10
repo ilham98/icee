@@ -15,15 +15,26 @@
         </div>
         <div class="card-body p-3">
           <div class="row">
-            <div class="col-sm-6 ">
-              <a class="h3 text-primary" href="/schedules/class">Class</a>
-              <div><div>Bla bla bla Bla bla bla Bla bla bla</div></div>
+            <div class="col-sm-6">
+              <div>
+                <div class="col-sm-12 my-3">
+                  <img style="width: 100%" src="/img/class.jpg">
+                </div>
+                <div class="col-sm-12 my-3 text-center">
+                  <a class="h3 text-primary text-center" href="/schedules/class">Class</a>  
+                </div>
+              </div>
             </div>
             <div class="col-sm-6">
-              <a class="h3 text-success" href="/schedules/corner">Corner</a>
-              <div><div>Bla bla bla Bla bla bla Bla bla bla</div></div>
+              <div>
+                <div class="col-sm-12 my-3">
+                  <img style="width: 100%" src="/img/corner.jpg">
+                </div>
+                <div class="col-sm-12 my-3 text-center">
+                  <a class="h3 text-primary text-center" href="/schedules/corner">Corner</a>  
+                </div>
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

@@ -44,7 +44,7 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Option</th>
+              <th>Name</th>
               <th>Status</th>
             </tr>
           </thead>
