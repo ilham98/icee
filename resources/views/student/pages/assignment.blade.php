@@ -6,7 +6,7 @@
 	<div class="card">
     <div class="card-header py-3">
           <div class="card-title">
-            <h6 class="m-0 font-weight-bold text-primary">Attendance</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Assignment</h6>
           </div>
       </div>
     <div class="card-body">
