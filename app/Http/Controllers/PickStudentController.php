@@ -49,7 +49,7 @@ class PickStudentController extends Controller
         if(isset($data['level']))
             $students = $students->where('level', $data['level']);
         if(isset($data['department_id']))
-            $students = $students->where('level', $data['department_id']);
+            $students = $students->where('department_id', $data['department_id']);
         
 
         $teacher = Auth::user()->teacher;
@@ -65,7 +65,8 @@ class PickStudentController extends Controller
 
 
             
-        $students = $students->paginate(20);        $current = $students->currentPage();
+        $students = $students->paginate(20);        
+        $current = $students->currentPage();
         return view('teacher.pages.pick-student', compact('students', 'current', 'departments', 'data', 'classState', 'cornerState'));
 
     }
