@@ -24,7 +24,7 @@ class StudentController extends Controller
         if(isset($data['level']))
             $students = $students->where('level', $data['level']);
         if(isset($data['department_id']))
-            $students = $students->where('level', $data['department_id']);
+            $students = $students->where('department_id', $data['department_id']);
         $students = $students->paginate(20);
     	return view('admin.pages.student', compact('students', 'departments', 'data'));
     }
