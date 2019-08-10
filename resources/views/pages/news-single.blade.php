@@ -1,5 +1,9 @@
 @extends('home-master')
 
+@section('title')
+  ICEE | {{ $news->title }}
+@endsection
+
 @section('content')
     <div class="d-flex p-3 justify-content-center">
         <div class="card col-sm-6">

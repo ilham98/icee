@@ -1,5 +1,10 @@
 @extends('home-master')
 
+@section('title')
+  ICEE | Welcome
+@endsection
+
+
 @section('content')
         <div class="d-flex align-items-center justify-content-center my-3 position-relative">
             <img class="col-sm-8" src="/img/welcome.jpg">
