@@ -34,6 +34,11 @@
                         <a class="nav-link text-light" href="/register">Register</a>
                       </li>
                     @endguest
+                    @auth
+                      <li class="nav-item">              
+                        <a class="nav-link text-white" href="/dashboard">Dashbboard</a>
+                      </li>
+                    @endauth
                 </ul>
             @endif
             </form>
