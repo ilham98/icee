@@ -15,7 +15,33 @@
           </div>
         </div>
         <div class="card-body p-0">
-          @include('components.student-filter-and-search')
+          <div class="p-3">
+  <form class="row">
+      <div class="form-group col-sm-4">
+        <label>Search</label>
+        <input class="form-control" value="{{ Request::get('search_query') }}"type="text" name="search_query" placeholder='Student number or name'>
+      </div>
+        <div class="form-group col-sm-2">
+          <label class="text-white">|</label>
+          <input type="submit" class="btn btn-primary d-block" value="Search">
+        </div>
+  </form>
+  <form class="row">
+      <div class="form-group col-sm-5">
+        <label>Department</label>
+        <select class="form-control" type="text" name="department_id">
+            <option value="">Choose Department</option>
+            @foreach($departments as $department)
+              <option {{ Request::get('department_id') == $department->department_id ? 'selected' : '' }} value="{{ $department->department_id }}">{{ $department->name }}</option>
+            @endforeach
+        </select>
+      </div>
+      <div class="form-group col-sm-2">
+        <label class="text-white">|</label>
+        <input type="submit" class="btn btn-primary d-block" value="Filter">
+      </div>
+  </form>
+  </div>
           @if($students->count() > 0)
         <table class="table">
         <thead>
@@ -23,7 +49,6 @@
             <th>No</th>
             <th>Name</th>
             <th>Department</th>
-            <th>Level</th>
             <th>Option</th>
           </tr>
         </thead>
@@ -33,10 +58,9 @@
               <td>{{ ($i+1)*$current }}</td>
               <td>{{ $n->name }}</td>
               <td>{{ $n->department->name }}</td>
-              <td>{{ $n->level }}</td>
-                        <td>
-                            <a href="/interview/{{ $n->student_id }}/edit"><i class="fas fa-edit"></i></a>
-                        </td>
+              <td>
+                  <a href="/interview/{{ $n->student_id }}/edit"><i class="fas fa-edit"></i></a>
+              </td>
             </tr>
           @endforeach
         </tbody>

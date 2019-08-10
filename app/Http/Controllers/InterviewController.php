@@ -14,11 +14,9 @@ class InterviewController extends Controller
         $departments = Department::all();
     	$students = new Student;
         $students = $students->where(['semester' => $request->semester, 'year' => $request->year]);
-        if(isset($data['level']))
-            $students = $students->where('level', $data['level']);
         if(isset($data['department_id']))
-            $students = $students->where('level', $data['department_id']);
-        $students = $students->where('level', '<>', null)->paginate(20);
+            $students = $students->where('department_id', $data['department_id']);
+        $students = $students->paginate(20);
     	$current = $students->currentPage();
     	return view('teacher.pages.interview', compact('students', 'current', 'departments', 'data'));
     }
