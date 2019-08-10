@@ -17,4 +17,8 @@ class Teacher extends Model
     public function students() {
     	return $this->belongsToMany('App\Student', 'student_teacher', 'teacher_id', 'student_id');
     }
+
+    public function level() {
+    	return $this->hasMany('App\TeacherLevel', 'teacher_id', 'teacher_id');
+    }
 }

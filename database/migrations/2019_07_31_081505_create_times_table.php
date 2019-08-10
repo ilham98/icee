@@ -14,9 +14,9 @@ class CreateTimesTable extends Migration
     public function up()
     {
         Schema::create('times', function (Blueprint $table) {
-            $table->bigIncrements('time_id');
+            $table->increments('time_id');
             $table->time('start');
-            $table->string('type');
+            $table->char('type', 1);
             $table->char('day', 1);
         });
     }

@@ -14,24 +14,24 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->bigIncrements('student_id');
-            $table->string('student_number');
-            $table->string('name');
-            $table->string('note')->nullable();
-            $table->string('reason')->nullable();
+            $table->increments('student_id');
+            $table->char('student_number', 8);
+            $table->string('name', 100);
+            $table->text('note')->nullable();
+            $table->text('reason')->nullable();
             $table->year('year');
-            $table->char('semester', 1);
-            $table->string('phone_number');
+            $table->tinyInteger('semester');
+            $table->string('phone_number', 15);
             $table->char('level')->nullable();
-            $table->date('interview_date');
+            $table->date('interview_date')->nullable();
 
-            $table->bigInteger('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users');
 
-            $table->bigInteger('department_id')->unsigned();
+            $table->integer('department_id')->unsigned();
             $table->foreign('department_id')->references('department_id')->on('departments');
 
-            $table->bigInteger('teacher_id')->unsigned()->nullable();
+            $table->integer('teacher_id')->unsigned()->nullable();
             $table->foreign('teacher_id')->references('teacher_id')->on('teachers');
         });
     }

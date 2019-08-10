@@ -14,15 +14,15 @@ class CreateTopicsTable extends Migration
     public function up()
     {
         Schema::create('topics', function (Blueprint $table) {
-            $table->bigIncrements('topic_id');
-            $table->string('conversation');
+            $table->increments('topic_id');
+            $table->text('conversation');
             $table->year('year');
-            $table->string('semester');
-            $table->integer('week');
+            $table->tinyInteger('semester');
+            $table->tinyInteger('week');
 
-            $table->bigInteger('time_id')->unsigned();
+            $table->integer('time_id')->unsigned();
             $table->foreign('time_id')->references('time_id')->on('times');
-            $table->bigInteger('teacher_id')->unsigned();
+            $table->integer('teacher_id')->unsigned();
             $table->foreign('teacher_id')->references('teacher_id')->on('teachers');
         });
     }

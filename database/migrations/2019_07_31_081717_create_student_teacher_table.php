@@ -14,8 +14,8 @@ class CreateStudentTeacherTable extends Migration
     public function up()
     {
         Schema::create('student_teacher', function (Blueprint $table) {
-            $table->bigInteger('student_id')->unsigned();
-            $table->bigInteger('teacher_id')->unsigned();
+            $table->integer('student_id')->unsigned();
+            $table->integer('teacher_id')->unsigned();
             $table->char('type', 1);
             
             $table->foreign('student_id')->references('student_id')->on('students');

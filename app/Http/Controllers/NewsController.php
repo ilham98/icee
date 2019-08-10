@@ -44,4 +44,14 @@ class NewsController extends Controller
         $news->delete();
         return redirect('news')->with('delete-success', 'success');
     }
+
+    public function publicIndex() {
+        $news = News::orderBy('news_id', 'desc')->paginate(8);
+        return view('pages.news', compact('news'));
+    }
+
+    public function publicShow($id) {
+        $news = News::find($id);
+        return view('pages.news-single', compact('news'));
+    }
 }

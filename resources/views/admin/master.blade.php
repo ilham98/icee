@@ -63,6 +63,14 @@
           <span>Student Attedance</span></a>
       </li>
 
+      <hr class="sidebar-divider my-0">
+
+      <li class="nav-item {{ url()->current() === url('/teacher-level') ? 'active' : '' }}">
+        <a class="nav-link" href="/teacher-level">
+          <i class="fas fa-clipboard-list"></i>
+          <span>Teacher Level</span></a>
+      </li>
+
       <li class="nav-item {{ url()->current() === url('/configurations') ? 'active' : '' }}">
         <a class="nav-link" href="/configurations">
           <i class="fas fa-clipboard-list"></i>

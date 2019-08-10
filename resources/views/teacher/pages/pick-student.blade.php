@@ -2,7 +2,7 @@
 
 @section('title')
   @parent
-  Interview
+  Pick Student
 @endsection
 
 @section('content')
@@ -74,8 +74,9 @@
         <thead>
           <tr>
             <th>No</th>
-            <th>Title</th>
-                    <th>Option</th>
+            <th>Name</th>
+            <th>Level</th>
+            <th>Option</th>
           </tr>
         </thead>
         <tbody>
@@ -83,6 +84,7 @@
             <tr>
               <td>{{ ($i+1)*$current }}</td>
               <td>{{ $n->name }}</td>
+              <td>{{ $n->level }}</td>
                         <td>
                             @if(!$n->teachers()->where('student_teacher.type', 'A')->first())
                             <a href="/pick-student/{{ $n->student_id }}/pick?type=A">Pick to class <i class="fas fa-edit"></i></a>

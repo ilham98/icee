@@ -14,8 +14,8 @@ class CreateSchedulesTable extends Migration
     public function up()
     {
         Schema::create('schedules', function (Blueprint $table) {
-            $table->bigInteger('student_id')->unsigned();
-            $table->bigInteger('time_id')->unsigned();
+            $table->integer('student_id')->unsigned();
+            $table->integer('time_id')->unsigned();
 
             $table->foreign('student_id')->references('student_id')->on('students');
             $table->foreign('time_id')->references('time_id')->on('times');

@@ -14,10 +14,10 @@ class CreateTeachersTable extends Migration
     public function up()
     {
         Schema::create('teachers', function (Blueprint $table) {
-            $table->bigIncrements('teacher_id');
-            $table->string('name');
-            $table->string('phone_number');
-            $table->bigInteger('user_id')->unsigned();
+            $table->increments('teacher_id', 10);
+            $table->string('name', 100);
+            $table->string('phone_number', 15);
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users');
         });
     }

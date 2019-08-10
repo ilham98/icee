@@ -14,11 +14,12 @@ class CreateConfigurationsTable extends Migration
     public function up()
     {
         Schema::create('configurations', function (Blueprint $table) {
-            $table->bigIncrements('configuration_id');
+            $table->integer('configuration_id');
             $table->year('current_year');
-            $table->char('current_semester', '1');
+            $table->tinyInteger('current_semester');
             $table->date('registration_open');
             $table->date('registration_close');
+            $table->primary('configuration_id');
         });
     }
 

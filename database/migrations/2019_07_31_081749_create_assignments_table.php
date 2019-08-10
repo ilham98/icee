@@ -14,14 +14,14 @@ class CreateAssignmentsTable extends Migration
     public function up()
     {
         Schema::create('assignments', function (Blueprint $table) {
-            $table->bigIncrements('assignment_id');
-            $table->bigInteger('student_id')->unsigned();
-            $table->bigInteger('topic_id')->unsigned();
-            $table->string('student_comment')->nullable();
-            $table->string('teacher_comment')->nullable();
-            $table->integer('minute')->nullable();
-            $table->string('partner')->nullable();
-            $table->integer('week')->nullable();
+            $table->increments('assignment_id');
+            $table->integer('student_id')->unsigned();
+            $table->integer('topic_id')->unsigned();
+            $table->text('student_comment')->nullable();
+            $table->text('teacher_comment')->nullable();
+            $table->tinyInteger('minute')->nullable();
+            $table->string('partner', 100)->nullable();
+            $table->tinyInteger('week')->nullable();
             $table->foreign('student_id')->references('student_id')->on('students');
             $table->foreign('topic_id')->references('topic_id')->on('topics');
         });

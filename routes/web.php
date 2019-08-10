@@ -16,13 +16,13 @@ Route::get('/', function () {
     return view('welcome', compact('news'));
 });
 
-Auth::routes();
-
 Route::get('news', 'NewsController@index');
 Route::post('news', 'NewsController@store');
 Route::delete('news/{id}', 'NewsController@destroy');
 Route::get('news/{id}', 'NewsController@edit');
 Route::put('news/{id}', 'NewsController@update');
+Route::get('public/news', 'NewsController@publicIndex');
+Route::get('public/news/{id}', 'NewsController@publicShow');
 Route::get('teachers', 'TeacherController@index');
 Route::get('teachers/{id}', 'TeacherController@edit');
 Route::put('teachers/{id}', 'TeacherController@update');
@@ -62,10 +62,17 @@ Route::post('attendances', 'AttedanceController@store');
 Route::get('profile', 'ProfileController@index');
 Route::put('profile', 'ProfileController@update');
 Route::get('student-attendance', 'StudentAttendance@index')->middleware('config');
+Route::get('teacher-level', 'TeacherLevelController@index');
+Route::get('teacher-level/{id}', 'TeacherLevelController@edit');
+Route::put('teacher-level/{id}', 'TeacherLevelController@update');
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/login', 'LoginController@showLoginPage')->name('login')->middleware('guest');
 Route::post('/login', 'LoginController@login');
+Route::get('/register', 'LoginController@showRegisterPage')->name('register')->middleware('guest', 'config');
+Route::post('/register', 'LoginController@register')->middleware('config');
+Route::post('/logout', 'LoginController@logout');
 
 Route::get('/dashboard', 'HomeController@dashboard')->middleware('auth', 'config');
