@@ -6,6 +6,7 @@ use App\Student;
 use App\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 
 class StudentController extends Controller
 {
@@ -48,4 +49,26 @@ class StudentController extends Controller
 
         return redirect(url()->previous())->with('edit-success', true);
     }
+
+public function export(Request $request) {
+    $students = Student::with('times');
+    $data = $request->all();
+    if(isset($data['year']))
+        $students = $students->where('year', $data['year']);
+    if(isset($data['semester']))
+        $students = $students->where('semester', $data['semester']);
+    if(isset($data['search_query']))
+        $students = $students->where(function($query) use($data) {
+            $query->orWhere('student_number', 'like' , '%'.$data['search_query'].'%')->orWhere('name', 'like' , '%'.$data['search_query'].'%');
+        });
+    if(isset($data['level']))
+        $students = $students->where('level', $data['level']);
+    if(isset($data['department_id']))
+        $students = $students->where('department_id', $data['department_id']);
+    $students = $students->get();
+    $pdf = PDF::loadView('exports.students-export', compact('students'))->setPaper('a4', 'landscape');
+
+    // return $pdf->download('invoice.pdf');
+    return $pdf->stream();
+}
 }

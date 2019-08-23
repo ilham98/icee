@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Time;
 use App\Student;
 use Illuminate\Http\Request;
+use PDF;
 
 class ScheduleController extends Controller
 {
@@ -29,7 +30,8 @@ class ScheduleController extends Controller
     public function index() {
     	$students = Student::paginate(10);
     	$current = $students->currentPage();
-    	return view('admin.pages.schedule', compact('students', 'current'));
+        $departments = \App\Department::all();
+    	return view('admin.pages.schedule', compact('students', 'current', 'departments'));
     }
 
     public function edit($id) {
@@ -73,4 +75,34 @@ class ScheduleController extends Controller
     	$student->update($body);
     	return redirect('/schedule/'.$id.'/edit')->with('edit-success', 'success');;
     }
+
+    public function export(Request $request) {
+        $students = new Student;
+        $data = $request->all();
+        if(isset($data['year']))
+            $students = $students->where('year', $data['year']);
+        if(isset($data['semester']))
+            $students = $students->where('semester', $data['semester']);
+        if(isset($data['search_query']))
+            $students = $students->where(function($query) use($data) {
+                $query->orWhere('student_number', 'like' , '%'.$data['search_query'].'%')->orWhere('name', 'like' , '%'.$data['search_query'].'%');
+            });
+        if(isset($data['level']))
+            $students = $students->where('level', $data['level']);
+        if(isset($data['department_id']))
+            $students = $students->where('department_id', $data['department_id']);
+        $students = $students->with(['times' => function($query) {
+            $query->where('times.type', 'A');
+        }]);
+        $students = $students->whereHas('times', function($query) {
+                        $query->where('times.type', 'A');
+                    }, '>', 0)->whereHas('teachers', function($query) {
+                        $query->where('student_teacher.type', 'A');
+                    })->get();
+        $pdf = PDF::loadView('exports.schedule-export', compact('students'))->setPaper('a4', 'landscape');
+
+        // return $pdf->download('invoice.pdf');
+        return $pdf->stream();
+    }
 }
+

@@ -1,6 +1,6 @@
 @extends('student.master')
 
-@section('title', 'Attendance')
+@section('title', 'Assignment')
 
 @section('content')
 	<div class="card">
@@ -29,6 +29,10 @@
         </div>
       </form>
       @if($topics->count() > 0 && Request::get('week'))
+      <form class="d-flex my-3 justify-content-end" action="{{ url('/assignments/export?week=1') }}" method="GET"> 
+            <input hidden="" type=" " name="week" value="{{ Request::get('week') }}">
+          <input type="submit" class="btn btn-primary" name="" value="Print As PDF">
+      </form>
       <form class="row" method="POST" action="/assignments?week={{ Request::get('week') }}">
         @foreach($topics as $i => $topic)
           @php
@@ -50,6 +54,10 @@
             <div class="form-group">
               <label>Student Comment</label>
               <textarea name="student_comment[{{ $topic->topic_id }}]" class="form-control">{{ $assignment ? $assignment->student_comment : '' }}</textarea>
+            </div>    
+            <div class="form-group">
+              <label>Teacher Comment</label>
+              <textarea disabled="" name="student_comment[{{ $topic->topic_id }}]" class="form-control">{{ $assignment ? $assignment->teacher_comment : '' }}</textarea>
             </div>     
             <div class="form-group">
               <label>Partner</label>

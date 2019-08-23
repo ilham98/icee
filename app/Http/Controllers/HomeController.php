@@ -43,7 +43,9 @@ class HomeController extends Controller
 
             $chart = Student::select('year', 'semester', DB::raw('count(name) as c'))->groupBy('year', 'semester')->get();
 
-            return view('admin.dashboard', compact('applicant_students', 'students', 'chart', 'teachers'));
+            $chart2 = Student::has('times')->has('teachers')->join('departments', 'students.department_id', '=', 'departments.department_id')->select('departments.department_id', 'departments.name', DB::raw('count(departments.name) as c'))->groupBy('departments.department_id')->where(['year' => $request->year, 'semester' => $request->semester])->get();
+
+            return view('admin.dashboard', compact('applicant_students', 'students', 'chart', 'chart2', 'teachers'));
         } 
         if($role === '2'){
             $classStudent = Student::with('teachers')->whereHas('teachers', function($query) {

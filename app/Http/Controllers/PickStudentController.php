@@ -41,7 +41,7 @@ class PickStudentController extends Controller
         ]);
 
     	$data = $request->all();
-        $departments = Department::all();
+        $departments = Department::has('students')->get();
         if(isset($data['search_query']))
             $students = $students->where(function($query) use($data) {
                 $query->orWhere('student_number', 'like' , '%'.$data['search_query'].'%')->orWhere('name', 'like' , '%'.$data['search_query'].'%');
@@ -67,7 +67,7 @@ class PickStudentController extends Controller
             
         $students = $students->paginate(20);        
         $current = $students->currentPage();
-        return view('teacher.pages.pick-student', compact('students', 'current', 'departments', 'data', 'classState', 'cornerState'));
+        return view('teacher.pages.pick-student', compact('students', 'current', 'departments', 'data', 'classState', 'cornerState', 'level'));
 
     }
 

@@ -10,6 +10,7 @@ use App\Attendance;
 use App\Time;
 use App\Student;
 use Illuminate\Http\Request;
+use PDF;
 
 class AssignmentController extends Controller
 {
@@ -151,4 +152,22 @@ class AssignmentController extends Controller
         }
         return redirect(url()->previous())->with('insert-success', true);
     }
+
+    public function export(Request $request) {
+    $student = Auth::user()->student;
+            $teacher = $student->teachers()->where('student_teacher.type', 'A')->first();
+            $time = $student->times()->where('times.type', 'A')->first();
+            $topics = Topic::where([
+                'time_id' => $time->time_id, 
+                'year' => $request->year,
+                'semester' => $request->semester,
+                'week' => $request->week,
+                'teacher_id' => $teacher->teacher_id    
+            ])->get();
+    // dd($topics);
+    $pdf = PDF::loadView('exports.assignment-export', compact('topics', 'student', 'teacher', 'time'))->setPaper('a4');
+
+    // return $pdf->download('invoice.pdf');
+    return $pdf->stream();
+}
 }
