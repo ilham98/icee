@@ -16,7 +16,7 @@
           <select type="text" name="time_id" class="form-control">
             <option value="">Choose Schedule</option>
             @foreach($times as $time)
-              <option {{ Request::get('time_id') == $time->time_id ? 'selected' : '' }} value="{{ $time->time_id }}">{{ getClassType($time->type) }} {{ $time->start }}</option>
+              <option {{ Request::get('time_id') == $time->time_id ? 'selected' : '' }} value="{{ $time->time_id }}">{{ getClassType($time->type) }} - {{ generateDay($time->day) }} - {{ $time->start }}</option>
             @endforeach
           </select>
         </div>

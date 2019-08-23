@@ -24,11 +24,15 @@ class ScheduleClassController extends Controller
             $students = $students->where('level', $data['level']);
         if(isset($data['department_id']))
             $students = $students->where('department_id', $data['department_id']);
+        $students = $students->with(['times' => function($query) {
+            $query->where('times.type', 'A');
+        }]);
     	$students = $students->whereHas('times', function($query) {
 			    		$query->where('times.type', 'A');
 			    	}, '>', 0)->whereHas('teachers', function($query) {
 			    		$query->where('student_teacher.type', 'A');
 			    	})->paginate(20);
+
     	$current = $students->currentPage();
     	return view('admin.pages.schedule-class', compact('students', 'current', 'data', 'departments'));
     }

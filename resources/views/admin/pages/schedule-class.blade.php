@@ -19,7 +19,7 @@
         <thead>
           <tr>
             <th>No</th>
-            <th>Title</th>      
+            <th>Name</th>      
             <th>Time</th>
             <th>Teacher</th>
             <th>Option</th>

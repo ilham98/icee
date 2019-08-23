@@ -28,8 +28,13 @@ class ScheduleCornerController extends Controller
 			    		$query->where('times.type', 'B');
 			    	}, '>', 0)->whereHas('teachers', function($query) {
 			    		$query->where('student_teacher.type', 'B');
-			    	})->paginate(20);
-    	$current = $students->currentPage();
-    	return view('admin.pages.schedule-class', compact('students', 'current', 'data', 'departments'));
+			    	});
+    	
+        $students = $students->with(['times' => function($query) {
+            $query->where('times.type', 'B');
+        }]);
+        $students = $students->paginate(20);
+        $current = $students->currentPage();
+    	return view('admin.pages.schedule-corner', compact('students', 'current', 'data', 'departments'));
     }
 }

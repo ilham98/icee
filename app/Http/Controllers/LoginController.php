@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Configuration;
+use App\Rules\CheckStudentEmail;
 
 class LoginController extends Controller
 {
@@ -43,14 +44,16 @@ class LoginController extends Controller
     }
 
     public function register(Request $request) {
-        // $request->validate([
-        //     'name' => 'required|email',
-        //     'password' => 'required',
-        //     'name' => 'required',
-        //     'student_number' => 'required',
-        //     'reason' => 'required',
-        //     'department_id' => 'required' 
-        // ]);
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+            'email' => ['required','email', new CheckStudentEmail],
+            'student_number' => 'required|numeric|digits:8',
+            'reason' => 'required',
+            'phone_number' => 'required|numeric',
+            'department_id' => 'required' 
+        ]);
+
         $body = $request->except('email', 'password');
         $user = User::create([
             'email' => $request->email,

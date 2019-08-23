@@ -2,7 +2,7 @@
 
 @section('title')
   @parent
-  Interview
+  Schedule Corner
 @endsection
 
 @section('content')
@@ -14,11 +14,12 @@
           </div>
         </div>
         <div class="card-body p-0">
+           @include('components.student-filter-and-search-2')
           <table class="table">
         <thead>
           <tr>
             <th>No</th>
-            <th>Title</th>      
+            <th>Name</th>      
             <th>Time</th>
             <th>Teacher</th>
             <th>Option</th>
@@ -38,6 +39,9 @@
           @endforeach
         </tbody>
       </table>
+      <div class="p-3">
+        {{ $students->appends($data)->links() }} 
+      </div>
         </div>
       </div>
     </div>
