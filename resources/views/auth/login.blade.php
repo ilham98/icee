@@ -62,6 +62,7 @@
                     @csrf
                     @method('POST')
                   </form>
+                  <p style="text-align: center"><a href="/password/reset">Forget Password?</a></p>
                 </div>
               </div>
             </div>

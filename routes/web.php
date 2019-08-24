@@ -11,9 +11,16 @@
 |
 */
 
+Auth::routes();
+
+
 Route::get('/', function () {
 	$news = App\News::limit(5)->orderBy('updated_at', 'desc')->get();
     return view('welcome', compact('news'));
+});
+
+Route::get('test', function() {
+	return view('auth.passwords.email2', ['url' => 'manap']);
 });
 
 Route::get('news', 'NewsController@index');

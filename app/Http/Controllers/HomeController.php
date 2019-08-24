@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd(Auth::user());
+        return redirect('/dashboard');
     }
 
     public function dashboard(Request $request)

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\ResetPasswordNotification;
 
 class User extends Authenticatable
 {
@@ -46,5 +47,11 @@ class User extends Authenticatable
 
     public function student() {
         return $this->hasOne('App\Student', 'user_id', 'user_id');
+    }
+
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
 }
