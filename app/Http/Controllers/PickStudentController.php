@@ -65,7 +65,7 @@ class PickStudentController extends Controller
 
         $levels = $students->get()->map(function($s) {
             return $s->level;
-        })->unique()->all();
+        })->unique()->sort()->all();
     
         $students = $students->paginate(20);        
         $current = $students->currentPage();

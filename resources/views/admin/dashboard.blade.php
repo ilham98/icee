@@ -34,9 +34,11 @@
 	        </div>
 	        <div class="row mt-5">
 	        <div class="col-sm-6">
-	        	<canvas id="myChart"></canvas>
+	        	<div class="text-center text-primary my-3">Applicant Students</div>
+	        	<canvas id="myChart" class="mt-5"></canvas>
 	        </div>
 	        <div class="col-sm-6">
+	        	<div class="text-center text-primary my-3">Active Students by Department</div>
 	        	<canvas id="jurusanChart"></canvas>
 	        </div>
 		    </div>
@@ -70,6 +72,9 @@
 
 		    // Configuration options go here
 		    options: {
+		    	legend: {
+		    		display: false
+		    	},
 			    scales: {
 			      yAxes: [{
 			        ticks: {
