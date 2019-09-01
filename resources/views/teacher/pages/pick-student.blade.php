@@ -84,15 +84,9 @@
         <label>Level</label>
         <select class="form-control" type="text" name="level">
             <option value="">Choose Level</option>
-            @if($level->level == 1)
-              <option {{ Request::get('level') == 1 ? 'selected' : '' }} value="1">1</option>
-              <option {{ Request::get('level') == 2 ? 'selected' : '' }} value="2">2</option>
-              <option {{ Request::get('level') == 3 ? 'selected' : '' }} value="3">3</option>
-            @else
-              <option {{ Request::get('level') == 4 ? 'selected' : '' }} value="4">4</option>
-              <option {{ Request::get('level') == 5 ? 'selected' : '' }} value="5">5</option>
-              <option {{ Request::get('level') == 6 ? 'selected' : '' }} value="6">6</option>
-            @endif
+            @foreach($levels as $l)
+              <option {{ Request::get('level') == $l ? 'selected' : '' }} value="{{ $l }}">Level {{ $l }}</option>
+            @endforeach
         </select>
       </div>
       <div class="form-group col-sm-5">
@@ -110,6 +104,7 @@
       </div>
   </form>
   </div>
+        @if($level)
           @if($students->count() > 0)
           <table class="table">
         <thead>
@@ -147,6 +142,9 @@
       </table>
       @else
         <div class="p-3">There is no student who have registered</div>
+      @endif
+      @else
+        <div class="p-3">You dont have teacher level</div>
       @endif
         </div>
       </div>

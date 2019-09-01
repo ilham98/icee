@@ -31,14 +31,6 @@
 	        			Registered Student{{ $students->count() > 1 ? 's' : '' }}
 	        		</span>
 	        	</div>
-	        	<div class="ml-5">
-	        		<span class="h1 text-primary">
-	        			{{ $teachers->count() }}
-	        		</span>
-	        		<span class="h5">
-	        			Teacher{{ $teachers->count() > 1 ? 's' : '' }}
-	        		</span>
-	        	</div>
 	        </div>
 	        <div class="row mt-5">
 	        <div class="col-sm-6">

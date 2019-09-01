@@ -55,19 +55,21 @@ class PickStudentController extends Controller
         $teacher = Auth::user()->teacher;
 
         $level = $teacher->level()->where(['year' => $request->year, 'semester' => $request->semester])->first();
-        if(!$level){
-            $students = $students->where('year', 100);
+        if(!$level){  
+            $students = $students->whereIn('level', [10]);
         } else if($level->level == 1) {
             $students = $students->whereIn('level', [1,2,3]);
         } else if($level->level == 2) {
             $students = $students->whereIn('level', [4,5,6]);
         }
 
-
-            
+        $levels = $students->get()->map(function($s) {
+            return $s->level;
+        })->unique()->all();
+    
         $students = $students->paginate(20);        
         $current = $students->currentPage();
-        return view('teacher.pages.pick-student', compact('students', 'current', 'departments', 'data', 'classState', 'cornerState', 'level'));
+        return view('teacher.pages.pick-student', compact('students', 'current', 'departments', 'data', 'classState', 'cornerState', 'levels', 'level'));
 
     }
 
